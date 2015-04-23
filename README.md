@@ -7,3 +7,6 @@ This project is still under construction.
 
 ## Roadmap
 Currently, an editor is being developed, that can edit *.eml files.
+
+## License
+This project is licensed under GPL 3. See [Documentation/license.txt]([Documentation/license.txt).

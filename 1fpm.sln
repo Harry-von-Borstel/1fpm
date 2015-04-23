@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F612FB5-A4CD-4A0E-B95B-B85CFBD6DE56}"
 	ProjectSection(SolutionItems) = preProject
 		Documentation\License.txt = Documentation\License.txt
+		README.md = README.md
 		Documentation\Wiki.htm = Documentation\Wiki.htm
 		..\..\..\Visual Studio 2010\Projects\Windows API Code Pack 1.1\documentation\Windows API Code Pack Help.chm = ..\..\..\Visual Studio 2010\Projects\Windows API Code Pack 1.1\documentation\Windows API Code Pack Help.chm
 		..\..\..\Visual Studio 2010\Projects\Windows API Code Pack 1.1\documentation\Windows API Code Pack Help.chw = ..\..\..\Visual Studio 2010\Projects\Windows API Code Pack 1.1\documentation\Windows API Code Pack Help.chw
