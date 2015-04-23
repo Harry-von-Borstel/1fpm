@@ -1,0 +1,35 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:EmlEditorModels="clr-namespace:EmlEditorModels;assembly=EmlEditorModels"
+        xmlns:WindowsPresentationFoundation="clr-namespace:Microsoft.WindowsAPICodePack.Controls.WindowsPresentationFoundation;assembly=Microsoft.WindowsAPICodePack.Shell" 
+    xmlns:Controls="clr-namespace:Controls;assembly=Controls"
+    x:Class="EmlEditor.MainWindow"
+        Title="Message" Height="350" Width="525" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <EmlEditorModels:EditorViewModel x:Name="viewModel" />
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="buttonSave" Content="Save" Click="buttonSave_Click" />
+        <Label Content="Subject" Grid.Row="1"/>
+        <TextBox x:Name="textBoxSubject" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonOpen" Content="Open" Grid.Column="1" Click="buttonOpen_Click"/>
+
+        <WindowsPresentationFoundation:ExplorerBrowser x:Name="explorerBrowser" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" NavigationPane="Hide"/>
+        <Controls:BreadCrumb x:Name="breadCrumb" Grid.Row="2" MinHeight="20"
+                              
+                             IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="3" />
+
+    </Grid>
+</Window>

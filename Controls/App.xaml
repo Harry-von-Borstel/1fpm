@@ -1,0 +1,25 @@
+﻿<Application x:Class="UiDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+                <!--
+            This is the resource used for the BreadCrumb control. 
+            <ResourceDictionary Source="\EmlEditor;component/Themes/Generic.xaml"/>  
+            It would perfectly work to specify that resource like this, but unfortunately
+            this would disable editing that resource by "Edit Template -> Edit current" context menu 
+            in the designer for WindowDesignBreadCrumb.xaml.
+            However, that designer (a.k.a Cider) could be used to edit the resource when the resource is
+            specified like this: -->
+                <ResourceDictionary Source="Themes\Generic.xaml"/>
+            <!-- Unfortunately, this wouldn't work on runtime, because the resource is searched in 
+            "EmlEditor/Themes/Generic.xaml". For that reason, we've added an extra 
+            "EmlEditor/Themes/Generic.xaml" to this solution, that maps to 
+            "\EmlEditor;component/Themes/Generic.xaml" using <ResourceDictionary.MergedDictionaries>
+            -->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

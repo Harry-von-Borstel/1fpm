@@ -1,0 +1,40 @@
+Date:	Wed, 9 Jul 2014 03:20:13 -0400
+Received:	by mail8.safesecureweb.com via HTTP; Wed, 9 Jul 2014 03:20:13
+ -0400
+From:	"testa93@blueshell.com" <TestA93@blueshell.com>
+Reply-To:	TestA93@blueshell.com
+To:	<test94@blueshell.com>
+X-Account-Key:	account3
+X-UIDL:	sm_00000004_afc03bbb165644da84bccee9b7ed7cb8
+X-Mozilla-Status:	0001
+X-Mozilla-Status2:	00000000
+X-Mozilla-Keys:	
+Subject:	Test 1 to Test
+Message-ID:	<71f0c3ee$7e7c4bb1$5bc9c86a$@blueshell.com>
+MIME-Version:	1.0
+Content-Type:	multipart/alternative;
+ boundary="----=_NextPart_000_0001_749DDCE9.406243EF"
+X-Originating-IP:	[2.240.50.167]
+X-SmarterMail-TotalSpamWeight:	0 (Authenticated)
+
+This is a multipart message in MIME format.
+
+------=_NextPart_000_0001_749DDCE9.406243EF
+Content-Type:	text/plain; charset=us-ascii
+Content-Transfer-Encoding:	7bit
+
+
+Test
+
+
+------=_NextPart_000_0001_749DDCE9.406243EF
+Content-Type:	text/html; charset=iso-8859-1
+Content-Transfer-Encoding:	quoted-printable
+
+<span style=3D"font-family: Arial, Helvetica, sans-serif; font-size: 10pt">=
+<br />
+T<strong>est</strong><br />
+<div></div></span>
+
+------=_NextPart_000_0001_749DDCE9.406243EF--
+

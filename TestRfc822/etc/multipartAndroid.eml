@@ -1,0 +1,41 @@
+From - Wed Jul 09 09:29:47 2014
+X-Account-Key: account3
+X-UIDL: sm_00000003_afc03bbb165644da84bccee9b7ed7cb8
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Return-Path: <test94@blueshell.com>
+Received: from [192.168.1.249] (x2f005e8.dyn.telefonica.de [2.240.5.229]) by mail8.safesecureweb.com with SMTP;
+   Tue, 13 May 2014 13:00:47 -0400
+Date: Tue, 13 May 2014 19:03:55 +0200
+Subject: Test
+Message-ID: <19kw49d6n0659yhptt843un9.1400000635220@email.android.com>
+Importance: normal
+From: Harry von Borstel <test94@blueshell.com>
+To: "'Test93@Blueshell. Com'" <test93@blueshell.com>
+Reply-To: Harry von Borstel <test94@blueshell.com>
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="--_com.android.email_166918265574820"
+X-Rcpt-To: <test93@blueshell.com>
+X-SmarterMail-TotalSpamWeight: 0 (Authenticated)
+
+----_com.android.email_166918265574820
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
+
+VGVzdC4uLi4KCgoKVm9uIFNhbXN1bmcgTW9iaWxlIGdlc2VuZGV0
+
+----_com.android.email_166918265574820
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+PGh0bWw+PGhlYWQ+PG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0
+L2h0bWw7IGNoYXJzZXQ9VVRGLTgiPjwvaGVhZD48Ym9keSA+PGRpdj5UZXN0Li4uLjwvZGl2Pjxk
+aXY+PGJyPjwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+PGJyPjwvZGl2PjxkaXY+PGRpdiBzdHls
+ZT0iZm9udC1zaXplOjc1JTtjb2xvcjojNTc1NzU3Ij5Wb24gU2Ftc3VuZyBNb2JpbGUgZ2VzZW5k
+ZXQ8L2Rpdj48L2Rpdj48L2JvZHk+PC9odG1sPg==
+
+----_com.android.email_166918265574820--
+
+
+

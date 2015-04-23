@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="blueshell.rfc822.HeaderFields">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <AssociationLine Name="headerFields" Type="blueshell.rfc822.HeaderFieldBody" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="3.375" />
+        <Point X="4.5" Y="3.375" />
+        <Point X="4.5" Y="3.188" />
+        <Point X="7.25" Y="3.188" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.006" Y="0.102" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="From" Type="blueshell.rfc822.CommaList&lt;O&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="2" Y="4.812" />
+        <Point X="4" Y="4.812" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="To" Type="blueshell.rfc822.CommaList&lt;O&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="2" Y="4.625" />
+        <Point X="4" Y="4.625" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Cc" Type="blueshell.rfc822.CommaList&lt;O&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="4.938" />
+        <Point X="4" Y="4.938" />
+        <Point X="4" Y="4.938" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Bcc" Type="blueshell.rfc822.CommaList&lt;O&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="5.125" />
+        <Point X="4" Y="5.125" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="this[System.String]" Type="blueshell.rfc822.HeaderFieldBody" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="3.625" />
+        <Point X="2.375" Y="3.625" />
+        <Point X="2.375" Y="3.438" />
+        <Point X="7.25" Y="3.438" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.277" Y="0.039" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>BipAAAAAAAAEABAECAAAAAAAAAIMAAABAAAAAAAIABg=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\HeaderFields.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ReturnPath" />
+      <Property Name="From" />
+      <Property Name="Sender" />
+      <Property Name="To" />
+      <Property Name="Cc" />
+      <Property Name="Bcc" />
+      <Property Name="this[System.String]" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="headerFields" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="1.3" />
+  </Class>
+  <Class Name="blueshell.rfc822.CommaList&lt;O&gt;" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\CommaList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="blueshell.rfc822.RouteAddress" Collapsed="true">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\RouteAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="blueshell.rfc822.Mailbox" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\Mailbox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="blueshell.rfc822.Address" Collapsed="true">
+    <Position X="6" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAEAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="blueshell.rfc822.ArgumentBase" Collapsed="true">
+    <Position X="8.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAEAAAAAAAAAAAAECAAAAAAABAAAAA=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\ArgumentBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="blueshell.rfc822.HeaderFieldBody" Collapsed="true">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\HeaderField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="blueshell.rfc822.Message">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAEAEAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\Message.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="blueshell.rfc822.MessagePart">
+    <Position X="10.25" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="blueshell.rfc822.MessagePart.ReadResult" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\MessagePart.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIQABBQUBAAAAAABAgBAAAEBQAAAAQSAECAAE=</HashCode>
+      <FileName>C:\Users\HvB.HVB\Documents\Visual Studio 2013\Projects\1fpm\rfc822\MessagePart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

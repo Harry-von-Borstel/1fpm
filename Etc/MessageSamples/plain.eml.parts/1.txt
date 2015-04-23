@@ -1,0 +1,11 @@
+Your message could not be delivered / please include <NOSPAM>
+
+Sorry, but your mail could not be delivered, because it has been declined by spamdefence. Please send it again and include the text "<NOSPAM>" in the subject to bypass the spamdefence.
+
+_____________________________________________________________
+
+Es tut uns leid, aber Ihre Mail konnte nicht zugestellt werden, weil sie von Spamdefence abgelehnt wurde. Bitte senden Sie ihre Nachricht noch mal und fuegen Sie den Text "<NOSPAM>" in die Betreffzeile ein, um Spamdefence zu umgehen.
+
+
+
+
