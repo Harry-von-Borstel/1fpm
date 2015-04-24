@@ -52,6 +52,12 @@ namespace blueshell.rfc822
 			/// </summary>
 			Func<string, object> Create { get; set; }
 
+			/// <summary>
+			/// A <see cref="Func"/> that might override the field object rendering
+			/// </summary>
+			/// <remarks>
+			/// If this property is not set, the field body is rendered by the field object's <see cref="Object.ToString()"/> method.
+			/// </remarks>
 			Func<object,string> Render { get; set; }
 
 			/// <summary>
@@ -79,7 +85,13 @@ namespace blueshell.rfc822
 			/// </summary>
 			public Func<string, object> Create { get; set; }
 
-			public Func<object,string> Render { get; set; }
+			/// <summary>
+			/// A <see cref="Func"/> that might override the field object rendering
+			/// </summary>
+			/// <remarks>
+			/// If this property is not set, the field body is rendered by the field object's <see cref="Object.ToString()"/> method.
+			/// </remarks>
+			public Func<object, string> Render { get; set; }
 
 			/// <summary>
 			/// Sets the header field to a given field object
