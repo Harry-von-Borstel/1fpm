@@ -54,18 +54,6 @@ namespace blueshell.rfc822
 			get { return innerParts; }
 		}
 
-		private TransferEncoding contentTransferEncoding = TransferEncoding.SevenBit;
-
-		/// <summary>
-		/// The encoding used to transfer the data
-		/// </summary>
-		/// <remarks><see cref="http://tools.ietf.org/html/rfc2045#section-6"/></remarks>
-		public TransferEncoding ContentTransferEncoding
-		{
-			get { return contentTransferEncoding; }
-			private set { contentTransferEncoding = value; }
-		}
-
 		public Encoding Charset
 		{
 			get
@@ -277,11 +265,11 @@ namespace blueshell.rfc822
 						int numBytesRead = fileInput.Read(data, 0, data.Length);
 						if (numBytesRead == 0)
 							break;
-						line = Encode(data, numBytesRead, this.ContentTransferEncoding, this.Charset);
+						line = Encode(data, numBytesRead, this.HeaderFields.ContentTransferEncoding, this.Charset);
 						emlWriter.WriteMessage(line);
 						lineCounter += line.Count(c => c == '\n');
 					} while (true);
-					if (this.ContentTransferEncoding!= TransferEncoding.Base64)
+					if (this.HeaderFields.ContentTransferEncoding!= TransferEncoding.Base64)
 						emlWriter.WriteMessageLine("");	// Always end with CRLF
 				}
 			}
@@ -346,38 +334,11 @@ namespace blueshell.rfc822
 			var m = r.Match(line);
 			var fieldName = m.Groups[Re.Name.FIELD_NAME].Value;
 			var fieldBody = m.Groups[Re.Name.FIELD_BODY].Value;
-			switch (fieldName.ToLower())
-			{
-				case "content-transfer-encoding":
-					switch (fieldBody.ToLower())
-					{
-						case "7bit":
-							ContentTransferEncoding = TransferEncoding.SevenBit;
-							break;
-#if EIGHTBIT
-						case "8bit":
-							ContentTransferEncoding = TransferEncoding.EightBit;
-							break;
-#endif
-						case "base64":
-							ContentTransferEncoding = TransferEncoding.Base64;
-							break;
-						case "quoted-printable":
-							ContentTransferEncoding = TransferEncoding.QuotedPrintable;
-							break;
-						default:
-							ContentTransferEncoding = TransferEncoding.Unknown;
-							break;
-					}
-					break;
-				default:
-					break;
-			}
 			HeaderFields.Add(fieldName, fieldBody);
 		}
 		private bool doLineBreak = false;
 
-		private byte[] Decode(string line) { return Decode(line, this.ContentTransferEncoding, this.Charset, out doLineBreak); }
+		private byte[] Decode(string line) { return Decode(line, this.HeaderFields.ContentTransferEncoding, this.Charset, out doLineBreak); }
 
 		/// <summary>
 		/// Decodes an unfolded message line

@@ -46,7 +46,6 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="GroupAddress.cs" />
     <Compile Include="HeaderFieldBody.cs" />
-    <Compile Include="HeaderFieldBodyWrapper.cs" />
     <Compile Include="HeaderFields.cs" />
     <Compile Include="IHeaderFieldBody.cs" />
     <Compile Include="Mailbox.cs" />
