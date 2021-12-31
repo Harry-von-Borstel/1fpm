@@ -66,10 +66,8 @@ namespace EmlEditor
         {
             Dispatcher.Invoke(() =>
                 {
-                    var ofd = new OpenFileDialog();
+                    var ofd = new OpenFileDialog { Title = "Create new or open existing file", DefaultExt = ".eml", Filter = "Email|*.eml|All Files|*.*", CheckFileExists = false };
                     if (ofd.ShowDialog(this) == true)
-                    //var ofd = new CommonOpenFileDialog();
-                    //if (ofd.ShowDialog(this) == CommonFileDialogResult.Ok)
                     {
                         var fn = ofd.FileName;
                         this.viewModel.ReadFile(fn);

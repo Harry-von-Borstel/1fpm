@@ -42,7 +42,10 @@ namespace blueshell.rfc822
 		public bool FromFile(string filename)
 		{
 			LineCounter = 0;
-			using (var sr = new StreamReader(filename,Encoding.GetEncoding(28605)))
+			using (var sr =
+				System.IO.File.Exists(filename)
+				? new StreamReader(filename, Encoding.GetEncoding(28605))
+				: null)
 			{
 				return Read(sr, ref LineCounter, null, null, filename + ".parts") == ReadResult.FileFinished;
 			}

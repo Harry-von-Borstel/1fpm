@@ -350,18 +350,18 @@ namespace blueshell.rfc822
 		}
 
 		public string Subject
-		{
+        {
 			get
-			{
-				return headerFields["subject"].ToString();
-			}
-			set
-			{
-				headerFields["subject"] = new HeaderFieldBody(value);
-			}
-		}
+			=> headerFields.TryGetValue("subject", out var headerField)
+				   ? headerField.ToString()
+				   : "";
+            set
+            {
+                headerFields["Subject"] = new HeaderFieldBody(value);
+            }
+        }
 
-		public ContentType ContentTypeEffective
+        public ContentType ContentTypeEffective
 		{
 			get
 			{

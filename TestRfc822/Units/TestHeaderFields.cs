@@ -36,7 +36,7 @@ namespace TestRfc822
 
             headerFields.Subject = "This is my subject";
 
-            Assert.AreEqual("subject:	This is my subject\r\n", headerFields.ToString());
+            Assert.AreEqual("Subject:	This is my subject\r\n", headerFields.ToString());
         }
     }
 }

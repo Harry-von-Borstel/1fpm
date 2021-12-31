@@ -93,7 +93,7 @@ namespace blueshell.rfc822
 		/// <summary>
 		/// Reads the MessagePart from a stream
 		/// </summary>
-		/// <param name="emlReader">The stream to read from.</param>
+		/// <param name="emlReader">The stream to read from. If this is `null`, an empty MessagePart will be returned.</param>
 		/// <param name="lineCounter">The line counter for the input stream.</param>
 		/// <param name="parentContentType"></param>
 		/// <param name="parent">The parent MessagePart. Null for top level MessagePart.</param>
@@ -110,27 +110,22 @@ namespace blueshell.rfc822
 
 			try
 			{
+				if (emlReader == null)
+                {
+					SetTempStorage();
+					return ReadResult.FileFinished;
+                }
 				while (!emlReader.EndOfStream)
 				{
 					if (!headerReady)
 					{
 						line = emlReader.ReadFullFieldLine(ref lineCounter);
 						if (line.Length == 0)
-						{
-							headerReady = true;
-							var folder = parentFolder ?? parent.Filename;
-							this.Filename = Path.Combine(
-								folder,
-								HeaderFields.ContentDispositionFileName
-									?? GetDefaultFilename(parent) + GetDefaultExtension()
-								);
-							Directory.CreateDirectory(folder);
-							if (!IsMultiPart)
-							{
-								fileOutput = new FileStream(this.Filename, FileMode.Create);
-							}
-						}
-						else
+                        {
+                            headerReady = true;
+                            SetTempStorage();
+                        }
+                        else
 							AddHeaderField(line);
 					}
 					else
@@ -212,7 +207,24 @@ namespace blueshell.rfc822
 					fileOutput.Close();
 			}
 			return ReadResult.FileFinished;
-		}
+
+            void SetTempStorage()
+            {
+                var folder = parentFolder ?? parent.Filename;
+                this.Filename = Path.Combine(
+                    folder,
+                    HeaderFields.ContentDispositionFileName
+                        ?? GetDefaultFilename(parent) + GetDefaultExtension()
+                    );
+                Directory.CreateDirectory(folder);
+                if (!IsMultiPart)
+                {
+                    fileOutput = new FileStream(this.Filename, FileMode.Create);
+                }
+
+                return;
+            }
+        }
 
 		/// <summary>
 		/// Writes the message part to a stream
