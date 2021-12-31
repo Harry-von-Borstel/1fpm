@@ -28,5 +28,15 @@ namespace TestRfc822
 			Assert.AreEqual("ContentDisposition:	attachment; filename=MyFile.txt\r\n", headerFields.ToString());
 		}
 
-	}
+
+        [TestMethod]
+        public void TestSubjectHeaderFieldPlain()
+        {
+            var headerFields = new HeaderFields();
+
+            headerFields.Subject = "This is my subject";
+
+            Assert.AreEqual("subject:	This is my subject\r\n", headerFields.ToString());
+        }
+    }
 }

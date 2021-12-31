@@ -121,8 +121,10 @@ namespace blueshell.rfc822
 		{
 			var rest = line;
 			var result = new StringBuilder();
-			while (rest.Length > 78)
+            bool found = true;
+            while (rest.Length > 78 && found)
 			{
+                found = false;
 				for (int i = 77; i > 0; i--)
 				{
 					if (new[] { ' ', '\t' }.Contains(rest[i]))
@@ -130,6 +132,7 @@ namespace blueshell.rfc822
 						result.Append(rest.Substring(0, i));
 						result.Append("\r\n");
 						rest = rest.Substring(i);
+                        found = true;
 						break;
 					}
 				}

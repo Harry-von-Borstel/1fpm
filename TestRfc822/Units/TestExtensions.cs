@@ -49,6 +49,5 @@ namespace TestRfc822
 			}
 			sr.Close();
 		}
-
 	}
 }

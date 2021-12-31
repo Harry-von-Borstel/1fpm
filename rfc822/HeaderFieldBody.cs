@@ -17,8 +17,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace blueshell.rfc822
 {
@@ -31,7 +35,91 @@ namespace blueshell.rfc822
         private readonly string[] content;
         public HeaderFieldBody(params string[] contentItems)
         {
-            this.content = contentItems;
+            var decodedItems = new List<string>();
+            if (contentItems != null)
+                foreach (var contentItem in contentItems)
+                {
+                    decodedItems.Add(DecodeWords(contentItem));
+                }
+            this.content = decodedItems.ToArray();
+        }
+
+        private string DecodeWords(string contentItem)
+        // RFC2047 decoding https://www.ietf.org/rfc/rfc2047.txt
+        {
+            var result = "";
+            var delim = "";
+            var lastWordWasEncoded = false;
+            foreach (var word in contentItem.Split(new[] { ' ', '\t' }))
+            {
+                var e1 = lastWordWasEncoded;
+                var w = DecodeWord(word.Trim(), ref lastWordWasEncoded);
+                var e2 = lastWordWasEncoded;
+                var d =
+                    e1 && e2
+                        ? ""
+                        : delim;
+                result += d + w;
+                delim = " ";
+            }
+            return result;
+        }
+
+        internal static string DecodeWord(string word, ref bool wordWasEncoded)
+        {
+            var lastWordWasEncoded = wordWasEncoded;
+            wordWasEncoded = false;
+            if (word.Length > 75 || !word.StartsWith("=?") || !word.EndsWith("?="))
+                return word;
+            var parts = word.Split('?');
+            if (parts.Length != 5 || parts[0] != "=" || parts[4] != "=")
+                return word;
+            switch(parts[2])
+            {
+                case "Q":
+                    break;
+                case "B":
+                    // sorry, maybe later...
+                    return word;
+
+                default:
+                    return word;
+            }
+
+            try
+            {
+                var encoding = Encoding.GetEncoding(parts[1]);
+                var data = parts[3];
+                var result = "";
+                for (int i = 0; i < data.Length; i++)
+                {
+                    var c = data[i];
+                    switch (c)
+                    {
+                        case '=':
+                            if (!Regex.IsMatch(data.Substring(i + 1), "^[0-9A-Fa-f]{2}"))
+                                return word;
+                            var b = byte.Parse("00" + data.Substring(i + 1, 2), NumberStyles.AllowHexSpecifier);
+                            result += encoding.GetString(new[] { b });
+                            i += 2;
+                            break;
+
+                        case '_':
+                            result += " ";
+                            break;
+
+                        default:
+                            result += c;
+                            break;
+                    }
+                }
+                wordWasEncoded = true;
+                return result;
+            }
+            catch
+            {
+                return word;
+            }
         }
 
         /// <summary>
@@ -59,9 +147,63 @@ namespace blueshell.rfc822
                     : content.Aggregate(
                     "",
                     (total, next) =>
-						total +
-                        (string.Format("{0}:\t{1}\r\n", fieldName, next)).Fold());
+                        total +
+                        (string.Format("{0}:\t{1}\r\n", fieldName, EncodeAsWords(next))).Fold());
         }
 
+
+        private static string EncodeAsWords(string s)
+            // RFC2047 encoding https://www.ietf.org/rfc/rfc2047.txt
+        {
+            if (!(s.Any(c => c > '~' || c < ' ' ) || NeedsEncodingForFolding(s)))
+                return s;
+            var encoding = Encoding.GetEncoding("iso-8859-15");
+            string word = $"=?{encoding.BodyName}?Q?";
+            string result="";
+            const int maxword = 75; // the max size allowed for encoded-word
+            const int maxlenchar = 3;   // The max length of an encoded char
+            const int lenpostfix = 2; // The length of "?="
+            foreach (var c in s)
+            {
+                if (word.Length >= maxword - maxlenchar - lenpostfix)
+                {
+                    // fold it (i.e. split in order to make it foldable)
+                    result = $"{result}{word}?= ";
+                    word = $"=?{encoding.BodyName}?Q?";
+                }
+                switch (c)
+                {
+                    case ' ':
+                        word = word + "_";
+                        break;
+
+                    case '=':
+                    case '?':
+                    case '\t':
+                    case '_':
+                        var bytes = encoding.GetBytes(new char[] { c });
+                        foreach (var b in bytes)
+                        {
+                            word = word + $"={b:X2}";
+                        }
+                        break;
+
+                    default:
+                        if (c > '~')
+                            goto case '=';
+                        word = word + c;
+                        break;
+                }
+            }
+            return $"{result}{word}?=";
+        }
+
+        private static bool NeedsEncodingForFolding(string s)
+        {
+            if (s.Length <= 75)
+                return false;
+            var a = s.Split(' ', '\t');
+            return a.Any(s1 => s1.Length > 75);
+        }
     }
 }
