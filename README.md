@@ -6,7 +6,10 @@
 This project is still under construction.
 
 ## Roadmap
-Currently, an editor is being developed, that can edit *.eml files.
+
+- Currently, an editor is being developed, that can edit *.eml files. See [EmlEditor](EmlEditor/Readme.md).
+- Next, a mail receiver shall download mails from an IMAP server and store them as `*.eml`files locally.
+- Finally, a mail sender shall send `*.eml` files thru an SMTP server.
 
 ## License
 This project is licensed under GPL 3. See [Documentation/License.txt](Documentation/License.txt).

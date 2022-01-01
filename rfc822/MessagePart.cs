@@ -508,16 +508,14 @@ namespace blueshell.rfc822
 		/// <remarks>The epilogue is always automatically preceded by a CRLF, if present. This CRLF is not part of the epilogue and not contained in this property. Thus, if Epilogue==null, a multipart ends with a close-delimiter whereas when Epilogue=="", a multipart ends with a close-delimiter followed by a CRLF. <see cref="http://tools.ietf.org/html/rfc2046#section-5.1.1"/></remarks>
 		public string Epilogue { get; set; }
 
-		/// <summary>
-		/// Gets the MessagePart that contains the given file.
-		/// </summary>
-		/// <remarks>
-		/// If the file is outside this MessagePart's unpack folder, null is returned.
-		/// If the MessagePart doesn't exist, it will be created.
-		/// </remarks>
-		/// <param name="file"></param>
-		/// <returns></returns>
-		internal MessagePart GetPart(XFile file)
+        /// <summary>Gets the MessagePart that contains the given file.</summary>
+        /// <param name="file">The file in the unpack folder that should be added.</param>
+        /// <returns>
+        ///   The MessagePart that is represented by the file.
+        /// </returns>
+        /// <remarks>If the file is outside this MessagePart's unpack folder, null is returned.
+        /// If the MessagePart doesn't exist, it will be created.</remarks>
+        internal MessagePart GetPart(XFile file)
 		{
 			if (file == this.File)
 				return this;
