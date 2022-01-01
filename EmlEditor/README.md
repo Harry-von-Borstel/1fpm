@@ -6,7 +6,7 @@ This is an editor for `*.eml` files. An `*.eml` file consists of some mail heade
 
 ### Open
  Start editing your `*.eml` file by
- 
+
  ```
  EmlEditor myfile.eml
  ```
@@ -28,10 +28,19 @@ This is an editor for `*.eml` files. An `*.eml` file consists of some mail heade
 
 The first character of the content file's name designates the nature of the content file:
 
-| First character | Nature | Example | Generated header field |
-| --------- | ---- | --- | --- |
-| `0` to `9` | Main content | `1.txt` for plain text and `2.html` for rich text. | *(none)* |
-| `#` | Auxiliary content | `#sun.png` | `Content-ID: <sun>` |
-| `'` | Attachment | `'1stFile.txt` | `ContentDisposition:	attachment; filename=1stFile.txt` |
-| other | Attachment | `Pricelist.docx` | `ContentDisposition:	attachment; filename=Pricelist.docx` |
+| First character | Nature            | Example                                            | Generated header field                                       |
+| --------------- | ----------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| `0` to `9`      | Main content      | `1.txt` for plain text and `2.html` for rich text. | *(none)*                                                     |
+| `#`             | Auxiliary content | `#sun.png`                                         | `Content-ID: <sun>`                                          |
+| `'`             | Attachment        | `'1stFile.txt`                                     | `ContentDisposition:	attachment; filename=1stFile.txt`    |
+| other           | Attachment        | `Pricelist.docx`                                   | `ContentDisposition:	attachment; filename=Pricelist.docx` |
+
+### Save
+Use the *Save* command in order to save the edited content files to the original `*.eml`file.
+
+## Open issues / current work
+
+- [ ] First character of content file designates header fields
+- [ ] Add content files in *EmlEditor*
+- [ ] Handle auxiliary content in HTML content
 
