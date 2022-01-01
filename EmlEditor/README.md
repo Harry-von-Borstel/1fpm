@@ -28,8 +28,8 @@ This is an editor for `*.eml` files. An `*.eml` file consists of some mail heade
 
 The first character of the content file's name designates the nature of the content file:
 
-| First character | Nature | Example | Generated header field
-| --------- | ---- | --- |
+| First character | Nature | Example | Generated header field |
+| --------- | ---- | --- | --- |
 | `0` to `9` | Main content | `1.txt` for plain text and `2.html` for rich text. | *(none)* |
 | `#` | Auxiliary content | `#sun.png` | `Content-ID: <sun>` |
 | `'` | Attachment | `'1stFile.txt` | `ContentDisposition:	attachment; filename=1stFile.txt` |
