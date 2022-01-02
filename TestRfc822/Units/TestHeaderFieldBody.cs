@@ -1,12 +1,18 @@
 ﻿using blueshell.rfc822;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text;
 
 namespace TestRfc822
 {
 	[TestClass]
 	public class TestHeaderFieldBody
 	{
-		[TestMethod]
+        public TestHeaderFieldBody()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
+
+        [TestMethod]
 		public void TestHeaderFieldEmpty()
 		{
 			var hf = new HeaderFieldBody();

@@ -9,3 +9,4 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("c49a808f-e303-4386-aa48-afeb721edd36")]
+[assembly: System.Runtime.Versioning.SupportedOSPlatform("windows7.0")]

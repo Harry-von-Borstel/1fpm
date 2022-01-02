@@ -195,8 +195,15 @@ namespace blueshell.rfc822
 			public override string ToString()
 			{
 				return this.fieldDescriptor.Render==null
-					? this.FieldObject.ToString()
+					? Sorted(this.FieldObject.ToString())
 					: fieldDescriptor.Render(this.FieldObject);
+
+				string Sorted(string s) // .NET 6 emits params randomly
+				{
+					var parts = s.Split("; ");
+					Array.Sort(parts, 1, parts.Length - 1);
+					return string.Join("; ", parts);
+				}
 			}
 
 			public string ToString(string fieldName)

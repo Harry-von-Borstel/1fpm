@@ -2,12 +2,18 @@
 using blueshell.rfc822;
 using TestUtils;
 using System.IO;
+using System.Text;
 
 namespace TestRfc822.Units
 {
 	[TestClass]
 	public class TestMessage
 	{
+        public TestMessage()
+        {
+			Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+		}
+
 		[TestMethod]
 		public void TestMessageFromFilePlain()
 		{
@@ -157,37 +163,13 @@ T<strong>est</strong><br />
 
 		}
 
-		[TestMethod]
-		public void TestMessageToFilePlainWithAttachment()
-		{
-			TestMessageToFile("plainWithAttachment");
-		}
-
-		[TestMethod]
-		public void TestMessageToFileSimpleMultipart()
-		{
-			TestMessageToFile("simpleMultipart");
-		}
-
-		[TestMethod]
-		public void TestMessageToFileMultipartHtml()
-		{
-			TestMessageToFile("multipartHtml");
-		}
-
-		[TestMethod]
-		public void TestMessageToFileMultipartAndroid()
-		{
-			TestMessageToFile("multipartAndroid");
-		}
-
-		[TestMethod]
-		public void TestMessageToFileMultipartHtmlImage()
-		{
-			TestMessageToFile("multipartHtmlImage");
-		}
-
-		private static void TestMessageToFile(string bareName)
+		[DataTestMethod]
+		[DataRow("plainWithAttachment")]
+		[DataRow("simpleMultipart")]
+		[DataRow("multipartHtml")]
+		[DataRow("multipartAndroid")]
+		[DataRow("multipartHtmlImage")]
+		public void TestMessageToFile(string bareName)
 		{
 			// Read Message
 			var m = new Message();
@@ -209,16 +191,15 @@ T<strong>est</strong><br />
 		/// <summary>
 		/// Test adding a file to a message
 		/// </summary>
-		[TestMethod]
-		public void TestMessageAddFile()
+		[DataTestMethod]
+		[DataRow("multipartHtmlImage")]
+		public void TestMessageAddFile(string bareName)
 		{
-			var bareName = "multipartHtmlImage";
+            // Read Message
+            var m = new Message();
+			Assert.IsTrue(m.FromFile($@"etc\{bareName}.eml"));
 
-			// Read Message
-			var m = new Message();
-			Assert.IsTrue(m.FromFile(string.Format(@"etc\{0}.eml", bareName)));
-
-			var file1 = string.Format(@"etc\{0}.eml.parts\1\2\test.txt", bareName);
+			var file1 = $@"etc\{bareName}.eml.parts\1\2\test.txt";
 			File.Copy(@"etc\test.txt", file1, true);
 			m.AddFile(file1);
 			m.ToFile(@"out\multipartHtmlImageA.eml");

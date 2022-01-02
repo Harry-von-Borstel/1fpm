@@ -29,6 +29,11 @@ namespace blueshell.rfc822
 	{
 		internal int LineCounter;
 
+		static Message()
+		{
+			Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+		}
+
 		public Message()
 		{
 			this.HeaderFields.Date = DateTime.Now;

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>{996648EA-BDC7-4BC5-9389-52905E682A95}</ProjectGuid>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <AssemblyTitle>TestUtils</AssemblyTitle>
     <Product>TestUtils</Product>
 	<Company>www.blueshell.com</Company>
@@ -17,9 +17,5 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 </Project>

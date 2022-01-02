@@ -4,8 +4,7 @@
     <ProjectGuid>{65472266-CCFC-4D2F-AF2D-B473432C8EC3}</ProjectGuid>
     <RootNamespace>TypesaveViewModel</RootNamespace>
     <AssemblyName>TypesaveViewModel</AssemblyName>
-    <TargetFramework>net40</TargetFramework>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <AssemblyTitle>Typesafe View Model</AssemblyTitle>
     <Company>blueshell Software Engineering Harry von Borstel</Company>
     <Product>Typesafe View Model</Product>

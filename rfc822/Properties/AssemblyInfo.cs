@@ -11,3 +11,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("9530e459-9818-4dff-ae43-edf5d83f1239")]
 
 [assembly: InternalsVisibleTo("TestRfc822")]
+[assembly: System.Runtime.Versioning.SupportedOSPlatform("windows7.0")]

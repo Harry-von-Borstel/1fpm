@@ -9,6 +9,11 @@ namespace TestRfc822.Units
     [TestClass]
     public class TestMessagePart
     {
+        public TestMessagePart()
+        {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        }
+
         [TestMethod]
         public void TestMessagePartDecode()
         {

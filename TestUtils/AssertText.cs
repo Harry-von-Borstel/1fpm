@@ -28,13 +28,15 @@ namespace TestUtils
 {
 	public static class AssertText
 	{
-		public static void BytesAreEqual(byte[] exp, byte[] act,  string info=null)
+		public static void BytesAreEqual(byte[] exp, byte[] act,  string expSource=null, string actSource = null)
 		{
 			int lineCount = 1;
 			int charCount = 1;
 			var expLength = exp == null ? 0 : exp.Length;
 			var actLength = act == null ? 0 : act.Length;
 			var minLength = Math.Min(expLength, actLength);
+			expSource = EnrichSource(expSource);
+			actSource = EnrichSource(actSource);
 			for (int i = 0; i < minLength; i++)
 			{
 				if (exp[i] != act[i])
@@ -42,8 +44,7 @@ namespace TestUtils
 					int from = i - 10;
 					if (from < 0) from = 0;
 					throw new AssertFailedException(
-						string.Format("AssertFile.BytesAreEqual failed at byte {0}, line {4}, char {5}{6}.\r\n Expected (from byte {1}):\r\n{2}\r\n Actual (from byte {1}):\r\n{3}",
-						i, from, RenderBytes(exp, from, i), RenderBytes(act, from, i), lineCount, charCount, info));
+						$"AssertFile.BytesAreEqual failed at byte {i}, line {lineCount}, char {charCount}.\r\n Expected (from byte {from}{expSource}):\r\n{RenderBytes(exp, from, i)}\r\n Actual (from byte {from}{actSource}):\r\n{RenderBytes(act, from, i)}");
 				}
 				if (act[i] == (byte)'\n')
 				{
@@ -63,6 +64,13 @@ namespace TestUtils
 						   expLength,
 						   actLength, RenderBytes(exp, from, minLength), RenderBytes(act, from, minLength), from));
 			}
+
+			static string EnrichSource(string source)
+			{
+				return source == null
+					? null
+					: $" of \"{source}\"";
+			}
 		}
 
 		/// <summary>
@@ -74,7 +82,7 @@ namespace TestUtils
 		{
 			var exp = File.ReadAllBytes(expectedFile);
 			var act = File.ReadAllBytes(actualFile);
-			BytesAreEqual(exp, act, string.Format(", File \"{0}\"", expectedFile));
+			BytesAreEqual(exp, act, expectedFile, actualFile);
 			Console.WriteLine("Checked \"{0}\"", actualFile);
 		}
 
@@ -135,12 +143,12 @@ namespace TestUtils
 			var max = Math.Min(offset + 40, data.Length);
 			for (var i = offset; i < max; i++)
 			{
-				sOut += string.Format("{1}{0:x2}", data[i], i == marker ? '►' : ' ');
+				sOut += $"{(i == marker ? '►' : ' ')} {(data[i] >= 32 ? (char)data[i] : '?')}";
 			}
-			sOut += "\r\n" + (offset > 0 ? " ..." : "");
+			sOut += "\r\n" + (offset > 0 ? "..." : "");
 			for (var i = offset; i < max; i++)
 			{
-				sOut += string.Format("{1}{0} ", data[i] >= 32 ? (char)data[i] : '?', i == marker ? '►' : ' ');
+				sOut += $"{(i == marker ? '►' : ' ')}{data[i]:x2}";
 			}
 			return sOut;
 		}

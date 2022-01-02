@@ -4,8 +4,8 @@
     <ProjectGuid>{1733216F-2FCE-475B-8BF4-9439E2F51A56}</ProjectGuid>
     <RootNamespace>TypesaveViewModel.WpfBinding</RootNamespace>
     <AssemblyName>TypesaveViewModel.WpfBinding</AssemblyName>
-    <TargetFramework>net40</TargetFramework>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
     <AssemblyTitle>WpfBinding</AssemblyTitle>
     <Company>blueshell Software Engineering Harry von Borstel</Company>
     <Product>Typesafe View Model</Product>
@@ -21,12 +21,6 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TVM\TVM.csproj" />
   </ItemGroup>

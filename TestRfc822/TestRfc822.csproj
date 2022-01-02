@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>{F92D6345-1FA3-48FC-8175-A08C7A177E82}</ProjectGuid>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
@@ -22,6 +22,7 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.3.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
@@ -31,13 +32,31 @@
     <ProjectReference Include="..\TestUtils\TestUtils.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="etc\expected\multipartAndroid.eml">
+    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\1.htm">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part1.06060005.08010508%40blueshell.com.gif">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part2.06020808.01060507%40blueshell.com.gif">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part3.09010009.06070605%40blueshell.com.gif">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part4.01050909.08020404%40blueshell.com.gif">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part7.03020209.04090506%40blueshell.com.gif">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\1.txt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+	  <None Include="etc\expected\plain.eml.parts\1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="etc\expected\multipartHtml.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtmlImage.eml">
+	  <None Include="etc\expected\multipartHtmlImage.eml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="etc\expected\multipartHtmlImageA.eml">
@@ -70,32 +89,12 @@
     <None Include="etc\simpleMultipart.eml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="etc\expected\multipartHtmlImage.eml.parts\1\1.txt">
+    <None Include="etc\expected\multipartAndroid.eml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="etc\expected\multipartHtmlImage.eml.parts\1\2\1.htm">
+    </None>
+    <None Include="etc\expected\multipartHtml.eml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part1.06060005.08010508%40blueshell.com.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part2.06020808.01060507%40blueshell.com.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part3.09010009.06070605%40blueshell.com.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part4.01050909.08020404%40blueshell.com.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part7.03020209.04090506%40blueshell.com.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="etc\expected\plain.eml.parts\1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="etc\test.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
