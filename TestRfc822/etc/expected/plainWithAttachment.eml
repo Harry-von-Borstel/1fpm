@@ -13,7 +13,7 @@ Content-Transfer-Encoding:	7bit
 
 This is the plain text.
 --------------030202010500060606070708
-Content-Type:	text/plain; name=test.txt; charset=windows-1252
+Content-Type:	text/plain; charset=windows-1252; name=test.txt
 Content-Transfer-Encoding:	base64
 Content-Disposition:	attachment; filename="test.txt"
 
