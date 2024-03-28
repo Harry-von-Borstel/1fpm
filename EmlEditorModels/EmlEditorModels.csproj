@@ -16,8 +16,7 @@
     <DebugType>pdbonly</DebugType>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WinCopies.WindowsAPICodePack" Version="2.9.3" />
-    <PackageReference Include="WinCopies.WindowsAPICodePack.Shell" Version="2.10.2" />
+    <PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\rfc822\rfc822.csproj" />
