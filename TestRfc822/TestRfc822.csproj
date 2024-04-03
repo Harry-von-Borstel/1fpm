@@ -10,7 +10,7 @@
     <AssemblyTitle>TestRfc822</AssemblyTitle>
     <Product>TestRfc822</Product>
 	<Company>www.blueshell.com</Company>
-	<Copyright>Copyright © blueshell Software Engineering 2022</Copyright>
+	<Copyright>Copyright © blueshell Software Engineering 2024</Copyright>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
@@ -32,71 +32,107 @@
     <ProjectReference Include="..\TestUtils\TestUtils.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\1.htm">
+    <None Update="etc\expected\plain-message.html.eml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="etc\expected\plainWithAttachment-1stFile.txt.eml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="etc\sun.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+      <None Update="etc\1stFile.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part1.06060005.08010508%40blueshell.com.gif">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part2.06020808.01060507%40blueshell.com.gif">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part3.09010009.06070605%40blueshell.com.gif">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part4.01050909.08020404%40blueshell.com.gif">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\2\part7.03020209.04090506%40blueshell.com.gif">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtmlImage.eml.parts\1\1.txt">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-	  <None Include="etc\expected\plain.eml.parts\1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-	  <None Include="etc\expected\multipartHtmlImage.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtmlImageA.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\plain.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\plainWithAttachment.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\simpleMultipart.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\multipartAndroid.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\multipartHtml.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\multipartHtmlImage.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\plain.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\plainWithAttachment.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\simpleMultipart.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartAndroid.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\expected\multipartHtml.eml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="etc\test.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+      </None>
+      <None Update="etc\expected\multipartAndroid.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtml.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\plain-1stFile.txt.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\plain-sun.png.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage-#sun.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage-sun.png.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage-1stFile.txt.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\plain-test.txt.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage-test-#sun.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage-test.txt.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage.eml.parts\1\1.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage.eml.parts\1\2\1.htm">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage.eml.parts\1\2\part1.06060005.08010508%40blueshell.com.gif">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage.eml.parts\1\2\part2.06020808.01060507%40blueshell.com.gif">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage.eml.parts\1\2\part3.09010009.06070605%40blueshell.com.gif">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage.eml.parts\1\2\part4.01050909.08020404%40blueshell.com.gif">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\multipartHtmlImage.eml.parts\1\2\part7.03020209.04090506%40blueshell.com.gif">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\plain.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\plain.eml.parts\1.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\plainWithAttachment.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\expected\simpleMultipart.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\multipartAndroid.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\multipartHtml.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\multipartHtmlImage.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\plain.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\plainWithAttachment.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\simpleMultipart.eml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\message.html">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="etc\test.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 </Project>

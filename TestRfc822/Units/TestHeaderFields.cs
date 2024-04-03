@@ -1,5 +1,6 @@
 ﻿using System;
 using blueshell.rfc822;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestRfc822
@@ -38,5 +39,16 @@ namespace TestRfc822
 
             Assert.AreEqual("Subject:	This is my subject\r\n", headerFields.ToString());
         }
-    }
+
+		[TestMethod]
+		[DataRow("Content-ID:\t<xy.z>\r\n","Content-ID","<xy.z>")]
+		public void TestCustomHeaderField(string expectedResult, string field,params string[] contentItems)
+		{
+			var headerFields = new HeaderFields();
+
+			headerFields[field] = new HeaderFieldBody(contentItems);
+
+			headerFields.ToString(field).Should().Be(expectedResult);
+		}
+	}
 }

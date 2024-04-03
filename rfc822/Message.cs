@@ -78,10 +78,10 @@ namespace blueshell.rfc822
 		/// The filename must exist in the Message's unpack folder or subfolders.
 		/// </remarks>
 		/// <param name="filename">Name of the file to add to the message.</param>
-		public void AddFile(string filename)
+		public void AddFile(string filename, MessagePartKind messagePartKind)
 		{
 			var file = new XFile(filename);
-			if (this.GetPart(file) == null)
+			if (this.GetPart(file, messagePartKind) == null)
 				throw new ApplicationException("The file must exist in the Message's unpack folder or subfolders.");
 		}
 	}

@@ -5,7 +5,7 @@
     <AssemblyTitle>EmlEditorModels</AssemblyTitle>
     <Product>EmlEditorModels</Product>
 	<Company>www.blueshell.com</Company>
-	<Copyright>Copyright © blueshell Software Engineering 2022</Copyright>
+	<Copyright>Copyright © blueshell Software Engineering 2024</Copyright>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
