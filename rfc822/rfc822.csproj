@@ -6,7 +6,7 @@
     <AssemblyTitle>rfc822</AssemblyTitle>
     <Product>rfc822</Product>
 	<Company>www.blueshell.com</Company>
-	<Copyright>Copyright © blueshell Software Engineering 2022</Copyright>
+	<Copyright>Copyright © blueshell Software Engineering 2024</Copyright>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
@@ -20,6 +20,9 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XFiles\XFiles.csproj" />

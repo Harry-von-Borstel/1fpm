@@ -78,12 +78,39 @@ namespace TestUtils
 		/// </summary>
 		/// <param name="expectedFile">The file that is expected.</param>
 		/// <param name="actualFile">The file that is checked.</param>
-		public static void FilesAreEqual(string expectedFile, string actualFile)
+		public static void FilesAreEqual(string expectedFile, string actualFile, 
+			byte[] bytesToReplace = null, byte[] replacementBytes = null)
 		{
+			if (bytesToReplace == null && replacementBytes != null)
+			{
+				throw new ArgumentNullException(nameof(bytesToReplace));
+			}
+			if (bytesToReplace != null && replacementBytes == null)
+			{
+				throw new ArgumentNullException(nameof(replacementBytes));
+			}
 			var exp = File.ReadAllBytes(expectedFile);
+			if (bytesToReplace!=null)
+				exp = Replace(exp);
 			var act = File.ReadAllBytes(actualFile);
 			BytesAreEqual(exp, act, expectedFile, actualFile);
 			Console.WriteLine("Checked \"{0}\"", actualFile);
+
+			return;
+
+			byte[] Replace(byte[] original)
+			{
+				var i = original.AsSpan().IndexOf(bytesToReplace);
+				if (i < 0)
+				{
+					return original;
+				}
+				var r = original[..i]
+					.Concat(replacementBytes)
+					.Concat(original[(i+replacementBytes.Length)..])
+					.ToArray();
+				return Replace(r);
+			}
 		}
 
 		/// <summary>

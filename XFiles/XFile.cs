@@ -17,11 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
  */
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace XFiles
 {
@@ -65,10 +61,17 @@ namespace XFiles
 		/// <param name="childFile"></param>
 		/// <returns></returns>
 		public bool CanContain(XFile childFile)
-		{
-			return childFile.FullName.StartsWith(this.FullName);
-		}
+			=> childFile.FullName.StartsWith(this.FullName);
 
-		public string Name { get { return Path.GetFileName(fullName); } }
+		public string Name
+			=> Path.GetFileName(fullName);
+
+		public string Extension
+			=> Path.GetExtension(fullName);
+
+		public override string ToString()
+		{
+			return fullName;
+		}
 	}
 }

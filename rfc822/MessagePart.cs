@@ -36,6 +36,15 @@ namespace blueshell.rfc822
 			this.HeaderFields = new HeaderFields();
 		}
 
+		protected MessagePart(MessagePart original):this()
+		{
+			foreach (var field in original.HeaderFields) {
+				HeaderFields.Add(field.Key, field.Value.ToString());
+			}
+			Filename = original.Filename;
+			Text = original.Text;
+		}
+
 
 		public HeaderFields HeaderFields { get; set; }
 
@@ -515,25 +524,62 @@ namespace blueshell.rfc822
         /// </returns>
         /// <remarks>If the file is outside this MessagePart's unpack folder, null is returned.
         /// If the MessagePart doesn't exist, it will be created.</remarks>
-        internal MessagePart GetPart(XFile file)
+        internal MessagePart GetPart(XFile file, MessagePartKind messagePartKind)
 		{
 			if (file == this.File)
 				return this;
-			else if (this.IsMultiPart && this.File.CanContain(file))
+
+			XFile folder = IsMultiPart ? File : File.Folder;
+			if (folder.CanContain(file))
 			{
+				if (!this.IsMultiPart)
+				{
+					// Make this single part a multi part
+					MessagePart oldSinglePart = new MessagePart(this);
+					this.HeaderFields.ContentType = new ContentType("multipart/mixed") { Boundary = Guid.NewGuid().ToString() };
+					this.file = folder;
+					this.InnerParts.Add(oldSinglePart);
+				}
 				foreach (var ip in this.InnerParts)
 				{
 					if (ip.File.CanContain(file))
-						return ip.GetPart(file);
+						return ip.GetPart(file, messagePartKind);
 				}
 				// None found, just create it.
 				var mp = new MessagePart();
 				this.InnerParts.Add(mp);
 				mp.Filename = file.FullName;
-				mp.HeaderFields.ContentDispositionFileName = file.Name;
+				switch (messagePartKind)
+				{
+					case MessagePartKind.Message:
+						break;
+					case MessagePartKind.IdContent:
+						mp.HeaderFields["Content-ID"] =  new HeaderFieldBody($"<{file.Name}>");
+						break;
+					default:
+						mp.HeaderFields.ContentDispositionFileName = file.Name;
+						break;
+				}
+				switch (file.Extension.ToLower())
+				{
+					case ".txt":
+						break;
+					default:
+						mp.HeaderFields.ContentTransferEncoding = TransferEncoding.Base64;
+						break;
+				}
 				return mp;
 			}
 			return null;
 		}
+
+		public enum MessagePartKind
+		{
+			Message,
+			Attachment,
+			IdContent,
+		}
 	}
+
+
 }

@@ -1,0 +1,27 @@
+Date:	Wed, 22 Apr 2015 09:19:17 +0200
+From:	test93 <test93@blueshell.com>
+To:	test95@blueshell.com
+Message-ID:	<55374B75.8070308@blueshell.com>
+MIME-Version:	1.0
+Subject:	Test plain text with attachment
+Content-Type:	multipart/mixed; boundary=------------030202010500060606070708
+
+This is a multi-part message in MIME format.
+--------------030202010500060606070708
+Content-Type:	text/plain; charset=utf-8
+Content-Transfer-Encoding:	7bit
+
+This is the plain text.
+--------------030202010500060606070708
+Content-Type:	text/plain; charset=windows-1252; name=test.txt
+Content-Transfer-Encoding:	base64
+Content-Disposition:	attachment; filename="test.txt"
+
+VGhpcyBpcyBhIG5ldyBmaWxlIGFkZGVkDQp0byB0aGUgbWFpbCE=
+--------------030202010500060606070708
+ContentDisposition:	attachment; filename=1stFile.txt
+
+This is a new file added
+as an attachment
+to the mail!
+--------------030202010500060606070708--

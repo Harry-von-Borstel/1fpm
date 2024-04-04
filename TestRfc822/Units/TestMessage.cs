@@ -3,6 +3,7 @@ using blueshell.rfc822;
 using TestUtils;
 using System.IO;
 using System.Text;
+using XFiles;
 
 namespace TestRfc822.Units
 {
@@ -192,18 +193,31 @@ T<strong>est</strong><br />
 		/// Test adding a file to a message
 		/// </summary>
 		[DataTestMethod]
-		[DataRow("multipartHtmlImage")]
-		public void TestMessageAddFile(string bareName)
+		[DataRow("plain", "message.html", MessagePart.MessagePartKind.Message)]
+		[DataRow("plain", "sun.png", MessagePart.MessagePartKind.IdContent)]
+		[DataRow("plain", "test.txt", MessagePart.MessagePartKind.Attachment)]
+		[DataRow("plain", "1stFile.txt", MessagePart.MessagePartKind.Attachment)]
+		[DataRow("plainWithAttachment", "1stFile.txt", MessagePart.MessagePartKind.Attachment)]
+		[DataRow("multipartHtmlImage", @"1\2\sun.png", MessagePart.MessagePartKind.IdContent)]
+		[DataRow("multipartHtmlImage", "1\\2\\test.txt", MessagePart.MessagePartKind.Attachment)]
+		[DataRow("multipartHtmlImage", @"1\2\1stFile.txt", MessagePart.MessagePartKind.Attachment)]
+		public void TestMessageAddFile(string bareName, string bareAddFileName, MessagePart.MessagePartKind messagePartKind)
 		{
             // Read Message
             var m = new Message();
 			Assert.IsTrue(m.FromFile($@"etc\{bareName}.eml"));
 
-			var file1 = $@"etc\{bareName}.eml.parts\1\2\test.txt";
-			File.Copy(@"etc\test.txt", file1, true);
-			m.AddFile(file1);
-			m.ToFile(@"out\multipartHtmlImageA.eml");
-			AssertText.FilesAreEqual(@"etc\expected\multipartHtmlImageA.eml", @"out\multipartHtmlImageA.eml");
+			var file1 = $@"etc\{bareName}.eml.parts\{bareAddFileName}";
+			bareAddFileName = new XFile(bareAddFileName).Name;
+			File.Copy($@"etc\{bareAddFileName}", file1, true);
+			m.AddFile(file1, messagePartKind);
+			string outFile = $@"out\{bareName}-{bareAddFileName}.eml";
+			m.ToFile(outFile);
+			AssertText.FilesAreEqual($@"etc\expected\{bareName}-{bareAddFileName}.eml", outFile,
+				Encoding.UTF8.GetBytes("921ec9ff-3b9c-441e-8813-1978541a8d82"),
+				Encoding.UTF8.GetBytes(m.HeaderFields.ContentType.Boundary));
+
+			//TODO Read file from actual eml and check against original file
 		}
 
 	}

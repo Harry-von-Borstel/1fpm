@@ -452,7 +452,11 @@ namespace blueshell.rfc822
 		{
 			get
 			{
-				return headerFields[key.ToLower()];
+				return headerFields[key];
+			}
+			set
+			{
+				headerFields[key] = value;
 			}
 		}
 
@@ -480,6 +484,9 @@ namespace blueshell.rfc822
 		{
 			return this.Aggregate("", (total, next) => total + next.Value.ToString(next.Key));
 		}
+
+		public string ToString(string field)
+			=> this[field].ToString(headerFields.Keys.First(k => k.Equals(field, StringComparison.OrdinalIgnoreCase)));
 
 		/// <summary>
 		/// Sets or gets the FileName of the <see cref="ContentDisposition"/>.
